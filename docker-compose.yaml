@@ -1,0 +1,21 @@
+nginx:
+  image: tenstartups/openresty
+  ports: 
+    - "8080:8080"
+
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - conf/:/etc/nginx/
+    - /usr/bin/docker:/usr/bin/docker
+  
+  command:
+    - nginx -c /etc/nginx/nginx.conf
+
+  links:
+    - memcached
+
+memcached:
+  image: memcached
+
+  ports:
+    - "11211"
