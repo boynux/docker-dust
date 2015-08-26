@@ -1,12 +1,15 @@
 nginx:
-  image: tenstartups/openresty
+  build: .
   ports: 
     - "8080:8080"
 
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - conf/:/etc/nginx/
+    - /bin/nc:/bin/nc
+    - /lib/x86_64-linux-gnu/libbsd.so.0:/lib/x86_64-linux-gnu/libbsd.so.0
     - /usr/bin/docker:/usr/bin/docker
+    - ./test-session.sh:/usr/bin/test-session.sh
   
   command:
     - nginx -c /etc/nginx/nginx.conf
@@ -19,3 +22,15 @@ memcached:
 
   ports:
     - "11211"
+
+cadvisor:
+   image: google/cadvisor:latest
+   ports:
+     - "9000:8080"
+
+   volumes:
+     - /:/rootfs:ro
+     - /var/run:/var/run:rw
+     - /sys:/sys:ro
+     - /var/lib/docker/:/var/lib/docker:ro
+
