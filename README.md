@@ -16,7 +16,7 @@ How to run:
 
 With the first request if you do `$ docker ps` you'll notice a new container has been started and after one minute it gets killed. Any subsequent call whithin one minute from the first request won't spawn new contaienr and will be delivered to the same container (from the same clinet IP).
 
-Why it's intresting?
+Why is it intresting?
 ====================
 
 * It's very secure since each client will be redirected to it's own container. 
