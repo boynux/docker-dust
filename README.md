@@ -19,7 +19,7 @@ With the first request if you do `$ docker ps` you'll notice a new container has
 Why is it intresting?
 ====================
 
-* It's very secure since each client will be redirected to it's own container. 
+* It's very secure since each client will be redirected to its own container. 
 * Finer resource management, since each container can be limited to subset of RAM and CPU so we can manage resources based on number of clinets
 * Upgrades will be easy as each request spawns new container and it can get new updated container (not supported yet).
 * Can be scaled easily by using Docke swarm and Overlay network we can spawn conatainer in distributed Docker hosts.
